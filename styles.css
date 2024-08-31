@@ -1,0 +1,242 @@
+/* Basic Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: rgba(10, 25, 51, 0.85);
+    color: #008B8B; /* Dark cyan text color */
+    position: relative;
+    overflow: hidden;
+}
+
+.background-images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    display: flex; /* Use flexbox to stack images */
+}
+
+.animated-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 20s ease-in-out; /* Smooth opacity transition */
+}
+
+/* Stagger animations for each image */
+.animated-image:nth-child(1) {
+    animation: backgroundSlide 20s infinite alternate;
+}
+.animated-image:nth-child(2) {
+    animation: backgroundSlide 20s 5s infinite alternate;
+}
+.animated-image:nth-child(3) {
+    animation: backgroundSlide 20s 10s infinite alternate;
+}
+.animated-image:nth-child(4) {
+    animation: backgroundSlide 20s 15s infinite alternate;
+}
+
+@keyframes backgroundSlide {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 350px; /* Reduced length */
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.login-header {
+    background-color: rgba(255, 255, 255, 0.3); /* Less transparent white background */
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.login-header h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #008B8B; /* Dark cyan color */
+    margin: 0; /* Remove margin to fit better within container */
+}
+
+.login-header p {
+    font-size: 16px;
+    color: #008B8B; /* Dark cyan color for Academic Nightingale */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+}
+
+.password-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Adjust margin to shift up */
+}
+
+.password-container button {
+    background-color: #fff;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    margin-left: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+button[type="submit"] {
+    background-color: #008B8B; /* Dark cyan color */
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #006666; /* Darker cyan on hover */
+}
+
+.signup {
+    margin-top: 15px;
+}
+
+.signup p {
+    font-size: 14px;
+    color: #fff; /* White color for 'New user?' text */
+}
+
+.signup a {
+    color: #008B8B; /* Dark cyan color for 'Sign up here' */
+    text-decoration: none;
+}
+
+.signup a:hover {
+    text-decoration: underline;
+}
+
+.footer {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.footer p {
+    color: #fff; /* White color for 'Contact Admin Adebayo at' text */
+}
+
+.footer a {
+    color: #008B8B; /* Dark cyan color for '09077103590' */
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.social-buttons a {
+    background-color: #fff;
+    border: 1px solid #008B8B; /* Dark cyan border */
+    color: #008B8B; /* Dark cyan text color */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.social-buttons a:hover {
+    background-color: #008B8B; /* Dark cyan color on hover */
+    color: #fff;
+}
+
+.alert {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    z-index: 2;
+    width: 90%;
+    max-width: 400px; /* Maximum width for better display */
+    text-align: center;
+}
+
+.alert.success {
+    background-color: #006666; /* Dark cyan color for success */
+}
+
+.alert.error {
+    background-color: #cc0000; /* Dark red color for errors */
+}
+
+.loading-state {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    text-align: center;
+    z-index: 2;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #008B8B; /* Dark cyan color for spinner */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.iframe-container {
+    display: none;
+    margin-top: 20px;
+}

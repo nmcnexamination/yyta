@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium NMCN CBT Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Animated Images -->
+    <div class="background-images">
+        <img src="image1.jpg" class="animated-image" alt="Background 1">
+        <img src="image2.jpg" class="animated-image" alt="Background 2">
+        <img src="image3.jpg" class="animated-image" alt="Background 3">
+        <img src="image4.jpg" class="animated-image" alt="Background 4">
+    </div>
+
+    <div class="alert success" id="successAlert">
+        <p>Login successful!</p>
+    </div>
+    <div class="alert error" id="usernameErrorAlert">
+        <p>Incorrect username.</p>
+    </div>
+    <div class="alert error" id="passwordErrorAlert">
+        <p>Incorrect password.</p>
+    </div>
+
+    <div class="login-container">
+        <div class="login-header">
+            <h1>PREMIUM NMCN CBT LOGIN</h1>
+        </div>
+        <p>Academic Nightingale</p>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <div class="password-container">
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="button" id="showPassword">Show</button>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <!-- New Sign Up Link -->
+        <div class="signup">
+            <p>New user? <a href="signup.html">Sign up here</a></p>
+        </div>
+    </div>
+
+    <!-- Loading State -->
+    <div class="loading-state" id="loadingState">
+        <div class="spinner"></div>
+        <p>Loading form...</p>
+    </div>
+
+    <div class="iframe-container" id="formContainer" style="display: none;">
+        <iframe width="640px" height="480px" src="https://forms.office.com/r/4gAbqsUAu6" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
+    </div>
+
+    <div class="footer">
+        <p>Contact Admin Adebayo at <a href="tel:+2349077103590">09077103590</a> for inquiries</p>
+    </div>
+
+    <!-- Independent Social Media Buttons -->
+    <div class="social-buttons">
+        <a href="https://whatsapp.com/channel/0029VaW2i4qJuyAIGj7CRb0W" target="_blank" class="whatsapp-button">WhatsApp</a>
+        <a href="https://t.me/nmcngroup" target="_blank" class="telegram-button">Telegram</a>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+
+            // Hide all alerts
+            document.querySelectorAll('.alert').forEach(alert => alert.style.display = 'none');
+
+            // Check if username has more than 3 characters and does not contain only numbers
+            const validUsername = /^[a-zA-Z]{4,}$/.test(username); // only letters and at least 4 characters
+            const validPasswords = ['Premium90', 'Premium60', 'Premium70', 'Premiumadmin', 'Premium20', 'Premium80'];
+
+            if (!validUsername) {
+                document.getElementById('usernameErrorAlert').style.display = 'block';
+            } else if (!validPasswords.includes(password)) {
+                document.getElementById('passwordErrorAlert').style.display = 'block';
+            } else {
+                document.querySelector('.login-container').style.display = 'none';
+                document.getElementById('loadingState').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('loadingState').style.display = 'none';
+                    document.getElementById('formContainer').style.display = 'block';
+                    document.getElementById('successAlert').style.display = 'block';
+                    // Open the form link in a new tab
+                    window.open('https://forms.office.com/r/4gAbqsUAu6', '_blank');
+                }, 2000); // Simulate loading for 2 seconds
+            }
+        });
+
+        document.getElementById('showPassword').addEventListener('click', function() {
+            const passwordField = document.getElementById('password');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                this.textContent = 'Hide';
+            } else {
+                passwordField.type = 'password';
+                this.textContent = 'Show';
+            }
+        });
+    </script>
+</body>
+</html>
